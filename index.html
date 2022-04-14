@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Churrascômetro</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <main>
+        <div id="container">
+            <h1>Churrascômetro</h1>
+            <form action="" method="get">
+                <input type="number" name="Adultos" id="dadosAdultos" placeholder="Adultos">
+                <br>
+                <input type="number" name="Crianças" id="dadosCrianças" placeholder="Crianças">
+                <br>
+                <input type="number" name="Duração" id="dadosHora" placeholder="Duração (h)">
+                <br>
+                <input type="button" id="calcular" value="Calcular" onclick="calculando()">
+            </form>
+            <div>
+                <p id="res">
+
+                </p>
+                <span onclick="activeInfo()">
+                    Como o cálculo é feito?
+                </span>
+                <p id="info">
+
+                </p>
+            </div>
+        </div>
+    </main>
+    <footer><p>Desenvolvido por João Victor F. Martins</p></footer>
+
+
+    <script src="scripts/script.js"></script>
+</body>
+
+</html>

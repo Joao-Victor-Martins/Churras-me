@@ -1,0 +1,110 @@
+@font-face {
+    font-family: "medieval";
+    src: url(/fonts/docktrin.ttf)
+}
+
+
+body {
+    background-image: url(/image/churras-bg.jpg);
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding-top: 15px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
+}
+
+main {
+    background-image: linear-gradient(200deg , #70400C, #c4731c);
+    max-width: 400px;
+    margin: auto;
+    border-radius: 50px 2px 50px 2px;
+    padding-top: 15px;
+}
+
+h1 {
+    font-family: medieval;
+    letter-spacing: 3px;
+    margin: 0;
+    text-decoration: underline;
+}
+
+input[type="number"]::-webkit-inner-spin-button, 
+input[type="number"]::-webkit-outer-spin-button {
+
+    -webkit-appearance: none;
+
+}
+
+input{
+    margin: 5px 0;
+    padding: 5px;
+    width: 200px;
+    border: none;
+
+}
+
+input[type="button"] {
+    background-color: aquamarine;
+    font-weight: bolder;
+
+}
+
+input[type="button"]:hover {
+    background-color: rgb(15, 212, 147);
+    
+}
+
+#container {
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+#res {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+span {
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    background-image: linear-gradient(200deg , #c4731c, #70400cc9);
+    border-radius: 10px 0px;
+    box-shadow: 0px 0px 2px black;
+}
+
+span:hover {
+    background-image: linear-gradient(200deg , #70400cc9, #c4731c);
+    cursor: pointer;
+    box-shadow:inset 0px 0px 2px black;
+}
+
+span:active {
+    background-color: #c4731c;
+    background-image: none;
+    box-shadow: none;
+}
+
+#info {
+    background-image: linear-gradient(to bottom, #70400cc9, #B96C1A);
+    max-width: 300px;
+    margin: auto;
+    margin-top: 20px;
+    padding: 1px 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+}
+
+footer {
+    background-color: whitesmoke;
+    text-align: center;
+    width: 100vw;
+    margin: auto;
+    padding: 10px;
+    position: fixed;
+    bottom: 0px;
+    
+} 
