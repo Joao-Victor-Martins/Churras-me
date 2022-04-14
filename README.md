@@ -3,4 +3,5 @@
 
  <a href="https://joao-victor-martins.github.io/Churras-me/" target="_blank" rel="external">Link para o Site</a>
 
-<img src="../image/print-para-o-git.png" alt="imagem capa do projeto">
+<img src="![print-para-o-git](https://user-images.githubusercontent.com/93431695/163414670-de306ccb-47fd-4467-9b4b-2b3831d8909f.png)
+" alt="imagem capa do projeto">
