@@ -1,11 +1,11 @@
 @font-face {
     font-family: "medieval";
-    src: url(/fonts/docktrin.ttf)
+    src: url(../fonts/docktrin.ttf)
 }
 
 
 body {
-    background-image: url(/image/churras-bg.jpg);
+    background-image: url(../image/churras-bg.jpg);
     width: 100vw;
     height: 100vh;
     margin: 0;
