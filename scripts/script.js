@@ -1,13 +1,12 @@
-var carne
-var cerveja
-var bebidas
+
+let adultos = document.getElementById("dadosAdultos")
+let criancas = document.getElementById("dadosCrianças")
+let duracao = document.getElementById("dadosHora")
 
 
 
-function calculando() {
-    let adultos = document.getElementById("dadosAdultos")
-    let criancas = document.getElementById("dadosCrianças")
-    let duracao = document.getElementById("dadosHora")
+function calculando(qdtTotalCarne) {
+
     let res = document.getElementById("res")
 
     let adultos01 = Number(adultos.value)
@@ -15,70 +14,98 @@ function calculando() {
     let duracao01 = Number(duracao.value)
 
 
-    //----------!CONDIÇÃO PARA VERIFICAR OS DADOS!----------//
+    var qdtTotalCarne = Number(carneTP(duracao01) * adultos01 + (carneTP(duracao01) / 2 * criancas01))
+    let qdtTotalCerveja = cervejaTP(duracao01) * adultos01
+    let qdtTotalBebidas = bebidaTP(duracao01) * adultos01 + (bebidaTP(duracao01) / 2 * criancas01)
+
+
 
     if (adultos.value.length == 0 && criancas.value.length == 0) {
         alert("[ERRO] Digite um valor nas duas caixas de texto")
 
-        //----------!CONDIÇÕES O TEMPO ACIMA DE 6!----------//
+    } else {
+        res.innerHTML = `<p>${qdtTotalCarne / 1000} Kg de Carne </p>`
+        res.innerHTML += `<p>${Math.ceil(qdtTotalCerveja / 355)} Latas de Cerveja</p>`
+        res.innerHTML += `<p>${Math.ceil(qdtTotalBebidas / 2000)} pet´s 2l de Bebidas</p>`
+    }
 
-    } else if (adultos01 > 0 && criancas01 > 0 && duracao01 >= 6) {
-        (carne = adultos01 * 650 + criancas01 * 325) / 1000
-        cerveja = (adultos01 * 2000) / 355
-        bebidas = (adultos01 * 1500 + criancas01 * 750) / 2000
-
-        res.innerHTML = `<p>${carne} Kg de Carne</p> <p>${Math.ceil(cerveja)} Latas de Cerveja</p> <p>${Math.ceil(bebidas)} pet´s 2l de Bebidas</p>`
-
-    } else if (adultos01 > 0 && duracao01 >= 6) {
-        carne = (adultos01 * 650) / 1000
-        cerveja = (adultos01 * 2000) / 355
-        bebidas = (adultos01 * 1500) / 2000
-
-        if (bebidas > 0) {
-            res.innerHTML = `<p>${carne} Kg de Carne</p> <p>${Math.ceil(cerveja)} Latas de Cerveja</p> <p>${Math.ceil(bebidas)} pet´s 2l de Bebidas</p>`
-        }
-
-    } else if (criancas01 > 0 && duracao01 >= 6) {
-        carne = (criancas01 * 325) / 1000
-        cerveja = 0
-        bebidas = (criancas01 * 750) / 2000
-
-        if (bebidas > 0) {
-            res.innerHTML = `<p>${carne} Kg de Carne</p> <p>${Math.ceil(cerveja)} Latas de Cerveja</p> <p>${Math.ceil(bebidas)} pet´s 2l de Bebidas</p>`
-        }
-        //----------!CONDIÇÕES O TEMPO ABAIXO DE 6!----------//
-
-    } else if (adultos01 > 0 && criancas01 > 0) {
-        carne = (adultos01 * 400 + criancas01 * 200) / 1000
-        cerveja = (adultos01 * 1200) / 355
-        bebidas = (adultos01 * 1000 + criancas01 * 500) / 2000
-
-        if (bebidas > 0) {
-            res.innerHTML = `<p>${carne} Kg de Carne</p> <p>${Math.ceil(cerveja)} Latas de Cerveja</p> <p>${Math.ceil(bebidas)} pet´s 2l de Bebidas</p>`
-        }
-    } else if (adultos01 > 0) {
-        carne = (adultos01 * 400) / 1000
-        cerveja = (adultos01 * 1200) / 355
-        bebidas = (adultos01 * 1000) / 2000
-
-        if (bebidas > 0) {
-            res.innerHTML = `<p>${carne} Kg de Carne</p> <p>${Math.ceil(cerveja)} Latas de Cerveja</p> <p>${Math.ceil(bebidas)} pet´s 2l de Bebidas</p>`
-        }
-    } else if (criancas01 > 0) {
-        carne = (criancas01 * 200) / 1000
-        cerveja = 0
-        bebidas = (criancas01 * 500) / 2000
-
-        if (bebidas > 0) {
-            res.innerHTML = `<p>${carne} Kg de Carne</p> <p>${Math.ceil(cerveja)} Latas de Cerveja</p> <p>${Math.ceil(bebidas)} pet´s 2l de Bebidas</p>`
+    function carneTP(duracao01) {
+        if (duracao01 >= 6) {
+            return 650
+        } else {
+            return 400
         }
     }
+
+    function cervejaTP(duracao01) {
+        if (duracao01 >= 6) {
+            return 2000
+        } else {
+            return 1200
+        }
+    }
+
+    function bebidaTP(duracao01) {
+        if (duracao01 >= 6) {
+            return 1500
+        } else {
+            return 1000
+        }
+    }
+}
+
+function calculandoCusto() {
+    document.getElementById("formvalor").removeAttribute("hidden")
+
+}
+
+var valorCarne = document.getElementById("precoCarneKg")
+let valorCerveja = document.getElementById("precoCervejaLata")
+let valorBebida = document.getElementById("precoBebida2L")
+
+var resCalc = document.getElementById("valorPorUnidade")
+
+let varGeral = document.getElementById("valueTotal")
+let varInd = document.getElementById("valueInd")
+
+function calcReal(qdtTotalCarne) {
+    let carneReal = Number(valorCarne.value)
+    let cervejaReal = Number(valorCerveja.value)
+    let bebidaReal = Number(valorBebida.value)
+
+    
+    let calctotalReal = carneReal * qdtTotalCarne
+
+    resCalc.innerHTML = `${calctotalReal}`
+
+    document.getElementById("formvalor").setAttribute("hidden", "hidden")
+}
+function calcDolar() {
+
+}
+function calcEuro() {
+
+}
+function calcYen() {
+
+}
+
+function valorTotal(varGeral, varInd) {
+    // if (varGeral == checked && varInd == checked) {
+
+    // }
+}
+function valorGeral1(varGeral) {
+
+}
+function valorInd1(varInd) {
+
 }
 
 function activeInfo() {
     let info = document.getElementById("info")
 
-    info.innerHTML =  `<p>Carne = 400/200 gr por pessoa, se a duração for maior que 6 horas = 650/325 por pessoa;
+    info.innerHTML = `<p>Carne = 400/200 gr por pessoa, se a duração for maior que 6 horas = 650/325 por pessoa;
     <br>
     Cerveja = 1200 ml por adulto, se a duração for maior que 6 horas = 2000 ml por adulto;
     <br>

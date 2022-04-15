@@ -38,7 +38,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 }
 
-input{
+.geral{
     margin: 5px 0;
     padding: 5px;
     width: 200px;
@@ -67,7 +67,7 @@ input[type="button"]:hover {
     font-weight: bold;
 }
 
-span {
+#infoCalc {
     padding: 10px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bolder;
@@ -76,13 +76,13 @@ span {
     box-shadow: 0px 0px 2px black;
 }
 
-span:hover {
+#infoCalc:hover {
     background-image: linear-gradient(200deg , #70400cc9, #c4731c);
     cursor: pointer;
     box-shadow:inset 0px 0px 2px black;
 }
 
-span:active {
+#infoCalc:active {
     background-color: #c4731c;
     background-image: none;
     box-shadow: none;

@@ -14,19 +14,55 @@
         <div id="container">
             <h1>Churrascômetro</h1>
             <form action="" method="get">
-                <input type="number" name="Adultos" id="dadosAdultos" placeholder="Adultos">
+                <input class="geral" type="number" name="Adultos" id="dadosAdultos" placeholder="Adultos">
                 <br>
-                <input type="number" name="Crianças" id="dadosCrianças" placeholder="Crianças">
+                <input class="geral" type="number" name="Crianças" id="dadosCrianças" placeholder="Crianças">
                 <br>
-                <input type="number" name="Duração" id="dadosHora" placeholder="Duração (h)">
+                <input class="geral" type="number" name="Duração" id="dadosHora" placeholder="Duração (h)">
                 <br>
-                <input type="button" id="calcular" value="Calcular" onclick="calculando()">
+                <input class="geral" type="button" id="calcular" value="Calcular" onclick="calculando()">
+                <br>
+                <input class="geral" type="button" id="calcularCusto" value="Calcular custo"
+                    onclick="calculandoCusto()">
+            </form>
+            <form action="" method="get" hidden id="formvalor">
+
+                <input class="geral" type="number"      name="preçoCarne" id="precoCarneKg" placeholder="Preço da carne por Kg">
+                <br>
+                <input class="geral" type="number" name="preçoCerveja" id="precoCervejaLata"
+                placeholder="Preço da cerveja por lata">
+                <br>
+                <input class="geral" type="number" name="preçoBebida" id="precoBebida2L"
+                placeholder="Preço da bebida por 2L">
+                <br>
+
+                
+                <input type="checkbox" name="Valor_total" id="valueTotal">
+                <label for="valueTotal">Valor Total</label>
+                <br>
+                <input type="checkbox" name="Valor_individual" id="valueInd">
+                <label for="valueInd">Valor Individual</label>
+                <br>
+
+
+
+                <input class="geral" type="button" value="R$" onclick="calcReal()">
+                <input class="geral" type="button" value="$" onclick="calcDolar()">
+                <input class="geral" type="button" value="€" onclick="calcEuro()">
+                <input class="geral" type="button" value="¥" onclick="calcYen()">
+
+
             </form>
             <div>
                 <p id="res">
 
                 </p>
-                <span onclick="activeInfo()">
+                
+                <p id="valorPorUnidade">
+
+                </p>
+                
+                <span onclick="activeInfo()" id="infoCalc">
                     Como o cálculo é feito?
                 </span>
                 <p id="info">
@@ -35,7 +71,9 @@
             </div>
         </div>
     </main>
-    <footer><p>Desenvolvido por João Victor F. Martins</p></footer>
+    <footer>
+        <p>Desenvolvido por João Victor F. Martins</p>
+    </footer>
 
 
     <script src="scripts/script.js"></script>
