@@ -224,9 +224,9 @@ function calcYen() {
     let totalCerveja = (qdtTotalCerveja / 355) * cervejaYen * 0.037
     let totalBebida = (qdtTotalBebidas / 2000) * bebidaYen * 0.037
 
-    resCalc.innerHTML = `<h3>Custo</h3> <p>${totalCarne.toLocaleString("pt-br", { style: "currency", currency: "JPY" })} em carne</p>`
-    resCalc.innerHTML += `<p>${totalCerveja.toLocaleString("pt-br", { style: "currency", currency: "JPY" })} em cerveja</p>`
-    resCalc.innerHTML += `<p>${totalBebida.toLocaleString("pt-br", { style: "currency", currency: "JPY" })} em bebidas</p>`
+    resCalc.innerHTML = `<h3>Custo</h3> <p>${Math.ceil(totalCarne).toLocaleString("pt-br", { style: "currency", currency: "JPY" })} em carne</p>`
+    resCalc.innerHTML += `<p>${Math.ceil(totalCerveja).toLocaleString("pt-br", { style: "currency", currency: "JPY" })} em cerveja</p>`
+    resCalc.innerHTML += `<p>${Math.ceil(totalBebida).toLocaleString("pt-br", { style: "currency", currency: "JPY" })} em bebidas</p>`
 
     document.getElementById("popUpBackground").setAttribute("hidden", "hidden")
 
