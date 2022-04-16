@@ -107,8 +107,9 @@ footer {
     margin-top: 20px;
     width: 100vw;
     padding: 10px;
-    position: static;
-
+    position: fixed;
+    top: auto;
+    bottom: 0;
 
 }
 
