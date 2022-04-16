@@ -30,6 +30,7 @@ h1 {
     letter-spacing: 3px;
     margin: 0;
     text-decoration: underline;
+    color: white;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
