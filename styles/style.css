@@ -6,11 +6,12 @@
 body {
     background-image: url(../image/churras-bg.jpg);
     width: 100vw;
-    height: 100vh;
+    height: 120vh;
+    max-height: 130vh;
     margin: 0;
     padding-top: 15px;
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: space;
     background-position: center;
     overflow: hidden;
     overflow-y: scroll;
