@@ -11,9 +11,10 @@ body {
     margin: 0;
     padding-top: 15px;
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-position: center;
     overflow: hidden;
+    overflow-y: scroll;
 }
 
 main {
