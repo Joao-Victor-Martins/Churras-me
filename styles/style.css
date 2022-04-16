@@ -19,7 +19,7 @@ body {
 
 main {
     background-image: linear-gradient(200deg, #70400C, #c4731c);
-    max-width: 400px;
+    max-width: 375px;
     margin: auto;
     border-radius: 50px 2px 50px 2px;
     padding-top: 15px;
