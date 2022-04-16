@@ -23,8 +23,8 @@ main {
     margin: auto;
     border-radius: 50px 2px 50px 2px;
     padding-top: 15px;
+    margin-bottom: 100px;
 }
-
 
 h1 {
     font-family: medieval;
