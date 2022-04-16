@@ -11,7 +11,7 @@ body {
     margin: 0;
     padding-top: 15px;
     background-size: cover;
-    background-repeat: repeat;
+    background-repeat: no-repeat;
     background-position: center;
     overflow: hidden;
     overflow-y: scroll;
@@ -23,7 +23,6 @@ main {
     margin: auto;
     border-radius: 50px 2px 50px 2px;
     padding-top: 15px;
-    margin-bottom: 20vh;
 }
 
 h1 {
@@ -105,11 +104,11 @@ input[type="button"]:hover {
 footer {
     background-color: whitesmoke;
     text-align: center;
+    margin-top: 20px;
     width: 100vw;
     padding: 10px;
-    position: sticky;
-    top: 1000px;
-    bottom: 1000px;
+    position: static;
+
 
 }
 
