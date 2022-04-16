@@ -5,7 +5,7 @@ let duracao = document.getElementById("dadosHora")
 
 
 
-function calculando(qdtTotalCarne) {
+function calculando() {
 
     let res = document.getElementById("res")
 
@@ -14,7 +14,7 @@ function calculando(qdtTotalCarne) {
     let duracao01 = Number(duracao.value)
 
 
-    var qdtTotalCarne = Number(carneTP(duracao01) * adultos01 + (carneTP(duracao01) / 2 * criancas01))
+    let qdtTotalCarne = carneTP(duracao01) * adultos01 + (carneTP(duracao01) / 2 * criancas01)
     let qdtTotalCerveja = cervejaTP(duracao01) * adultos01
     let qdtTotalBebidas = bebidaTP(duracao01) * adultos01 + (bebidaTP(duracao01) / 2 * criancas01)
 
@@ -24,7 +24,7 @@ function calculando(qdtTotalCarne) {
         alert("[ERRO] Digite um valor nas duas caixas de texto")
 
     } else {
-        res.innerHTML = `<p>${qdtTotalCarne / 1000} Kg de Carne </p>`
+        res.innerHTML = `<h3>Quantidade</h3> <p>${qdtTotalCarne / 1000} Kg de Carne </p>`
         res.innerHTML += `<p>${Math.ceil(qdtTotalCerveja / 355)} Latas de Cerveja</p>`
         res.innerHTML += `<p>${Math.ceil(qdtTotalBebidas / 2000)} pet´s 2l de Bebidas</p>`
     }
@@ -53,53 +53,204 @@ function calculando(qdtTotalCarne) {
         }
     }
 }
-
+//-----------!INICIAR CALCULO DE CUSTO!-----------//
 function calculandoCusto() {
-    document.getElementById("formvalor").removeAttribute("hidden")
+    document.getElementById("popUpBackground").removeAttribute("hidden")
 
 }
 
-var valorCarne = document.getElementById("precoCarneKg")
+//-----------!VARIAVEIS GLOBAL PARA CALCULAR MOEDA!-----------//
+let valorCarne = document.getElementById("precoCarneKg")
 let valorCerveja = document.getElementById("precoCervejaLata")
 let valorBebida = document.getElementById("precoBebida2L")
-
 var resCalc = document.getElementById("valorPorUnidade")
 
-let varGeral = document.getElementById("valueTotal")
-let varInd = document.getElementById("valueInd")
-
-function calcReal(qdtTotalCarne) {
+//-----------!FUNÇÃO PARA CALCULAR EM REAL!-----------//
+function calcReal() {
     let carneReal = Number(valorCarne.value)
     let cervejaReal = Number(valorCerveja.value)
     let bebidaReal = Number(valorBebida.value)
 
-    
-    let calctotalReal = carneReal * qdtTotalCarne
+    let adultos01 = Number(adultos.value)
+    let criancas01 = Number(criancas.value)
+    let duracao01 = Number(duracao.value)
 
-    resCalc.innerHTML = `${calctotalReal}`
+    let qdtTotalCarne = carneTP(duracao01) * adultos01 + (carneTP(duracao01) / 2 * criancas01)
+    let qdtTotalCerveja = cervejaTP(duracao01) * adultos01
+    let qdtTotalBebidas = bebidaTP(duracao01) * adultos01 + (bebidaTP(duracao01) / 2 * criancas01)
 
-    document.getElementById("formvalor").setAttribute("hidden", "hidden")
+    let totalCarne = (qdtTotalCarne / 1000) * carneReal
+    let totalCerveja = (qdtTotalCerveja / 355) * cervejaReal
+    let totalBebida = (qdtTotalBebidas / 2000) * bebidaReal
+
+    resCalc.innerHTML = `<h3>Custo</h3> <p>${totalCarne.toLocaleString("pt-br", { style: "currency", currency: "BRL" })} em carne</p>`
+    resCalc.innerHTML += `<p>${totalCerveja.toLocaleString("pt-br", { style: "currency", currency: "BRL" })} em cerveja</p>`
+    resCalc.innerHTML += `<p>${totalBebida.toLocaleString("pt-br", { style: "currency", currency: "BRL" })} em bebidas</p>`
+
+    document.getElementById("popUpBackground").setAttribute("hidden", "hidden")
+
+    function carneTP(duracao01) {
+        if (duracao01 >= 6) {
+            return 650
+        } else {
+            return 400
+        }
+    }
+    function cervejaTP(duracao01) {
+        if (duracao01 >= 6) {
+            return 2000
+        } else {
+            return 1200
+        }
+    }
+    function bebidaTP(duracao01) {
+        if (duracao01 >= 6) {
+            return 1500
+        } else {
+            return 1000
+        }
+    }
 }
+
+//-----------!FUNÇÃO PARA CALCULAR EM DOLAR!-----------//
 function calcDolar() {
+    let carneDolar = Number(valorCarne.value)
+    let cervejaDolar = Number(valorCerveja.value)
+    let bebidaDolar = Number(valorBebida.value)
 
+    let adultos01 = Number(adultos.value)
+    let criancas01 = Number(criancas.value)
+    let duracao01 = Number(duracao.value)
+
+    let qdtTotalCarne = carneTP(duracao01) * adultos01 + (carneTP(duracao01) / 2 * criancas01)
+    let qdtTotalCerveja = cervejaTP(duracao01) * adultos01
+    let qdtTotalBebidas = bebidaTP(duracao01) * adultos01 + (bebidaTP(duracao01) / 2 * criancas01)
+
+    let totalCarne = (qdtTotalCarne / 1000) * carneDolar * 4.7
+    let totalCerveja = (qdtTotalCerveja / 355) * cervejaDolar * 4.7
+    let totalBebida = (qdtTotalBebidas / 2000) * bebidaDolar * 4.7
+
+    resCalc.innerHTML = `<h3>Custo</h3> <p>${totalCarne.toLocaleString("pt-br", { style: "currency", currency: "USD" })} em carne</p>`
+    resCalc.innerHTML += `<p>${totalCerveja.toLocaleString("pt-br", { style: "currency", currency: "USD" })} em cerveja</p>`
+    resCalc.innerHTML += `<p>${totalBebida.toLocaleString("pt-br", { style: "currency", currency: "USD" })} em bebidas</p>`
+
+    document.getElementById("popUpBackground").setAttribute("hidden", "hidden")
+
+    function carneTP(duracao01) {
+        if (duracao01 >= 6) {
+            return 650
+        } else {
+            return 400
+        }
+    }
+    function cervejaTP(duracao01) {
+        if (duracao01 >= 6) {
+            return 2000
+        } else {
+            return 1200
+        }
+    }
+    function bebidaTP(duracao01) {
+        if (duracao01 >= 6) {
+            return 1500
+        } else {
+            return 1000
+        }
+    }
 }
+
+//-----------!FUNÇÃO PARA CALCULAR EM EURO!-----------//
 function calcEuro() {
+    let carneEuro = Number(valorCarne.value)
+    let cervejaEuro = Number(valorCerveja.value)
+    let bebidaEuro = Number(valorBebida.value)
 
+    let adultos01 = Number(adultos.value)
+    let criancas01 = Number(criancas.value)
+    let duracao01 = Number(duracao.value)
+
+    let qdtTotalCarne = carneTP(duracao01) * adultos01 + (carneTP(duracao01) / 2 * criancas01)
+    let qdtTotalCerveja = cervejaTP(duracao01) * adultos01
+    let qdtTotalBebidas = bebidaTP(duracao01) * adultos01 + (bebidaTP(duracao01) / 2 * criancas01)
+
+    let totalCarne = (qdtTotalCarne / 1000) * carneEuro * 5.08
+    let totalCerveja = (qdtTotalCerveja / 355) * cervejaEuro * 5.08
+    let totalBebida = (qdtTotalBebidas / 2000) * bebidaEuro * 5.08
+
+    resCalc.innerHTML = `<h3>Custo</h3> <p>${totalCarne.toLocaleString("pt-br", { style: "currency", currency: "EUR" })} em carne</p>`
+    resCalc.innerHTML += `<p>${totalCerveja.toLocaleString("pt-br", { style: "currency", currency: "EUR" })} em cerveja</p>`
+    resCalc.innerHTML += `<p>${totalBebida.toLocaleString("pt-br", { style: "currency", currency: "EUR" })} em bebidas</p>`
+
+    document.getElementById("popUpBackground").setAttribute("hidden", "hidden")
+
+    function carneTP(duracao01) {
+        if (duracao01 >= 6) {
+            return 650
+        } else {
+            return 400
+        }
+    }
+    function cervejaTP(duracao01) {
+        if (duracao01 >= 6) {
+            return 2000
+        } else {
+            return 1200
+        }
+    }
+    function bebidaTP(duracao01) {
+        if (duracao01 >= 6) {
+            return 1500
+        } else {
+            return 1000
+        }
+    }
 }
+
+//-----------!FUNÇÃO PARA CALCULAR EM IENE!-----------//
 function calcYen() {
+    let carneYen = Number(valorCarne.value)
+    let cervejaYen = Number(valorCerveja.value)
+    let bebidaYen = Number(valorBebida.value)
 
-}
+    let adultos01 = Number(adultos.value)
+    let criancas01 = Number(criancas.value)
+    let duracao01 = Number(duracao.value)
 
-function valorTotal(varGeral, varInd) {
-    // if (varGeral == checked && varInd == checked) {
+    let qdtTotalCarne = carneTP(duracao01) * adultos01 + (carneTP(duracao01) / 2 * criancas01)
+    let qdtTotalCerveja = cervejaTP(duracao01) * adultos01
+    let qdtTotalBebidas = bebidaTP(duracao01) * adultos01 + (bebidaTP(duracao01) / 2 * criancas01)
 
-    // }
-}
-function valorGeral1(varGeral) {
+    let totalCarne = (qdtTotalCarne / 1000) * carneYen * 0.037
+    let totalCerveja = (qdtTotalCerveja / 355) * cervejaYen * 0.037
+    let totalBebida = (qdtTotalBebidas / 2000) * bebidaYen * 0.037
 
-}
-function valorInd1(varInd) {
+    resCalc.innerHTML = `<h3>Custo</h3> <p>${totalCarne.toLocaleString("pt-br", { style: "currency", currency: "JPY" })} em carne</p>`
+    resCalc.innerHTML += `<p>${totalCerveja.toLocaleString("pt-br", { style: "currency", currency: "JPY" })} em cerveja</p>`
+    resCalc.innerHTML += `<p>${totalBebida.toLocaleString("pt-br", { style: "currency", currency: "JPY" })} em bebidas</p>`
 
+    document.getElementById("popUpBackground").setAttribute("hidden", "hidden")
+
+    function carneTP(duracao01) {
+        if (duracao01 >= 6) {
+            return 650
+        } else {
+            return 400
+        }
+    }
+    function cervejaTP(duracao01) {
+        if (duracao01 >= 6) {
+            return 2000
+        } else {
+            return 1200
+        }
+    }
+    function bebidaTP(duracao01) {
+        if (duracao01 >= 6) {
+            return 1500
+        } else {
+            return 1000
+        }
+    }
 }
 
 function activeInfo() {
